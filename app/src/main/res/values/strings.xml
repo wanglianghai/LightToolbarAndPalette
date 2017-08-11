@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LightToolbarPalette</string>
+    <string name="click_recycler">侧滑界面，点击回收侧滑</string>
+    <string name="interface_content">内容界面</string>
+    <string name="share">分享</string>
+    <string name="search">搜索</string>
+    <string name="configuration">设置</string>
+</resources>
