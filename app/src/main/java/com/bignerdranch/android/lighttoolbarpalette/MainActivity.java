@@ -82,44 +82,40 @@ public class MainActivity extends AppCompatActivity {
         mDrawerTool = new ActionBarDrawerToggle(this, mDrawer, R.string.open, R.string.close);
         mDrawerTool.syncState();
         mDrawer.addDrawerListener(mDrawerTool);
-        /*mDrawer.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });*/
     }
 
+
+    //action bar的项目的选择
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            if(mDrawer.isDrawerOpen(GravityCompat.START)){
+            //抽屉打开的？（抽屉的部位）
+            if (mDrawer.isDrawerOpen(GravityCompat.START)) {
                 mDrawer.closeDrawers();
-            }else{
+            } else {
+                //抽屉打开（抽屉的部位）
                 mDrawer.openDrawer(GravityCompat.START);
             }
-            return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    /*@Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home) {
+                if(mDrawer.isDrawerOpen(GravityCompat.START)){
+                    mDrawer.closeDrawers();
+                }else{
+                    mDrawer.openDrawer(GravityCompat.START);
+                }
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
+    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
