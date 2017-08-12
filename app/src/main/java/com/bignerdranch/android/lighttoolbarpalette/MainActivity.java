@@ -3,6 +3,7 @@ package com.bignerdranch.android.lighttoolbarpalette;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,12 +74,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setLeftCornerClick() {
-        //是否给左上角图标的左边加上一个返回的图标
+        //是否给左上角图标的左边加上一个的图标
+        getSupportActionBar().setHomeButtonEnabled(true);
+        //左上角展示图标正确
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //放后面，放在放图标的后面，放前面没效果
-        mDrawerTool = new ActionBarDrawerToggle(this, mDrawer, mToolbar, R.string.open, R.string.close);
+        mDrawerTool = new ActionBarDrawerToggle(this, mDrawer, R.string.open, R.string.close);
         mDrawerTool.syncState();
         mDrawer.addDrawerListener(mDrawerTool);
+        /*mDrawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });*/
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            if(mDrawer.isDrawerOpen(GravityCompat.START)){
+                mDrawer.closeDrawers();
+            }else{
+                mDrawer.openDrawer(GravityCompat.START);
+            }
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
